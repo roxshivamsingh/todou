@@ -1,0 +1,75 @@
+{% extends '_master.html' %} {% block content %}
+<br />
+{% if request.session.username is not null %}
+
+<div class="container rounded">
+  <nav class="navbar navbar-light bg-light rounded">
+    <a class="navbar-brand"><b class="todo-brand">Todo::U</b></a>
+    <form class="form-inline">
+      <div class="d-inline-flex justify-content-end">
+        <div class="dropdown">
+          <button
+            class="btn dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <b>{{ request.session.username }}</b>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">
+              <form action="/signout/" method="post">
+                {% csrf_token %}
+                <input type="submit" value="Logout" class="btn" />
+              </form>
+            </a>
+            <a class="dropdown-item" href="#">Another action</a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </nav>
+</div>
+<div class="container mt-4">
+  <div class="todo-content mt-2 rounded">
+    <ul class="list-group list-group-flush" id="todo-list">
+      <li class="list-group-item" id="add-task">
+        <b class="mr-2">+</b>
+        <input
+          type="text"
+          class="w-50 border-0"
+          id="cin"
+          placeholder="Add a Task"
+        />
+        <span id="cin-message">Add a Task</span>
+      </li>
+      <li class="list-group-item">
+        <input type="checkbox" name="" id="" class="mr-2" />Bring Milk at
+        Morning for Tea
+      </li>
+      <li class="list-group-item">
+        <input type="checkbox" name="" id="" class="mr-2" />Ready to Online
+        classes
+      </li>
+      <li class="list-group-item">
+        <input type="checkbox" name="" id="" class="mr-2" />Break
+      </li>
+
+      <li class="list-group-item">
+        <input type="checkbox" name="" id="" class="mr-2" />Revise Today's topic
+      </li>
+      <li class="list-group-item">
+        <input type="checkbox" name="" id="" class="mr-2" />Notes Making
+      </li>
+    </ul>
+  </div>
+</div>
+<footer class="container pt-3">
+  <div class="bg-white py-3 rounded text-center">
+    <b> Copyright &copy; Shivam Singh</b>
+  </div>
+</footer>
+
+{% endif %} {% endblock %}

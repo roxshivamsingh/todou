@@ -1,0 +1,54 @@
+{% extends '_master.html' %} {% block content %}
+<div class="text-center mt-5">
+  <a href="/" class="text-dark navbar-brand">
+    <b class="h3 font-weight-bolder todo-brand center-block">Todo::U</b>
+  </a>
+  <b class="h3 font-weight-bolder">- {{ title }}</b>
+</div>
+<div class="container">
+  <form action="" class="form-group mt-5" method="post">
+    {% csrf_token %}
+    <input
+      type="text"
+      name="username"
+      placeholder="Username"
+      class="{% if username is not null %}border-danger {% endif %} form-control"
+    />
+    <p class="text-danger">
+      {% if username is not null %} {{ username}} {% else %} <br />
+      {% endif %}
+    </p>
+
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      class="{% if password is not null %} border-danger {% endif %} form-control"
+    />
+    <p class="text-danger">
+      {% if password is not null %} {{ password}} {% else %} <br />
+      {% endif %}
+    </p>
+
+    <input
+      type="password"
+      name="cpassword"
+      placeholder="Confirmed Password"
+      class="{% if password is not null %} border-danger {% endif %} form-control"
+    />
+
+    <p class="text-danger">
+      {% if password is not null %} {{ password}} {% else %} <br />
+      {% endif %}
+    </p>
+    {% if status is not null %} {{ status}} {% endif %}
+
+    <input
+      type="submit"
+      value="Signup"
+      class="btn btn-primary shadow form-control"
+    />
+  </form>
+  Already have an Account?<a href="/signin">Signin?</a>
+</div>
+{% endblock %}
